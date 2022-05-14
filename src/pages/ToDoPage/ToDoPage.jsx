@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { BinSVG, ClockSVG, PencilSVG } from "../../assets/svgReactComponents";
-import { Navbar } from "../../components";
+import { Navbar, PromodoroModal } from "../../components";
 import { useTodoTasks } from "../../contexts";
 import {
   closeTaskForm,
@@ -19,6 +19,11 @@ export default function ToDoPage() {
   const [taskFormTitle, setTaskFormTitle] = useState("");
   const [taskFormDesc, setTaskFormDesc] = useState("");
   const [taskFormTime, setTaskFormTime] = useState(0);
+
+  const [dispPromodoroModal, setDispPromodoroModal] = useState({
+    display: false,
+    taskDetails: {},
+  });
 
   const { todoTasksState, setTodoTasksState } = useTodoTasks();
 
@@ -76,7 +81,25 @@ export default function ToDoPage() {
                         {todoTask.time}
                       </td>
                       <td className={`${styles["todo-task-table-actions"]}`}>
-                        <button className={`reset-button-inherit-parent`}>
+                        <button
+                          className={`reset-button-inherit-parent`}
+                          onClick={() => {
+                            setDispPromodoroModal({
+                              display: true,
+                              modalDetails: {
+                                taskDetails: { ...todoTask },
+                                actions: {
+                                  modalCloseAction: () => {
+                                    setDispPromodoroModal({
+                                      display: false,
+                                      taskDetails: {},
+                                    });
+                                  },
+                                },
+                              },
+                            });
+                          }}
+                        >
                           <ClockSVG
                             stroke={"var(--dui-primary-color)"}
                             width="3rem"
@@ -126,6 +149,9 @@ export default function ToDoPage() {
         </main>
       </section>
 
+      {dispPromodoroModal.display === true && (
+        <PromodoroModal modalDetails={dispPromodoroModal.modalDetails} />
+      )}
       {dispTaskForm.display === true && (
         <div className="dui-modal" style={{ backgroundColor: "#c2c2c2db" }}>
           <form

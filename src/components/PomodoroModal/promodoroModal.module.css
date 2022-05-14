@@ -1,0 +1,7 @@
+.pomodoro-content-holder {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 50%;
+}
