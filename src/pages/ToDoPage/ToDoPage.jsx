@@ -137,6 +137,7 @@ export default function ToDoPage() {
                           className={`reset-button-inherit-parent`}
                           onClick={() =>
                             removeTaskFromTodDoTask(
+                              todoTask,
                               todoTasksState,
                               setTodoTasksState
                             )
