@@ -2,15 +2,17 @@ import React from "react";
 import { useState } from "react";
 import { BinSVG, ClockSVG, PencilSVG } from "../../assets/svgReactComponents";
 import { Navbar, PromodoroModal } from "../../components";
-import { useTodoTasks } from "../../contexts";
+import { useAuth, useTodoTasks } from "../../contexts";
 import {
   closeTaskForm,
   onSubmitTaskForm,
   removeTaskFromTodDoTask,
 } from "./toDoPageUtils";
 import styles from "./toDoPage.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function ToDoPage() {
+  const navigate = useNavigate();
   const [dispTaskForm, setdispTaskForm] = useState({
     display: false,
     action: "none",
@@ -26,6 +28,8 @@ export default function ToDoPage() {
   });
 
   const { todoTasksState, setTodoTasksState } = useTodoTasks();
+  const { authState, checkValidTokenAndSetAuth } = useAuth();
+  const { isSignnedIn } = authState;
 
   return (
     <section className={`${styles[`page-wrap`]}`}>
@@ -50,7 +54,11 @@ export default function ToDoPage() {
                 dui-btn dui-btn--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld dui-util-bdr-radi-999px-mx reset-button-inherit-parent`}
                 onClick={() => {
                   console.log(dispTaskForm);
-                  setdispTaskForm({ display: true, action: "NEW_TASK" });
+                  if (isSignnedIn) {
+                    setdispTaskForm({ display: true, action: "NEW_TASK" });
+                  } else {
+                    navigate("/signin");
+                  }
                 }}
               >
                 +

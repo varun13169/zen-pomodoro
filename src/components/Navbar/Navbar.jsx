@@ -2,13 +2,12 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { MoonSVG, SunSVG } from "../../assets/svgReactComponents";
-import { useTheme } from "../../contexts";
+import { useAuth, useTheme } from "../../contexts";
 
 export default function Navbar() {
-  // const { authState, checkValidTokenAndSetAuth } = useAuth();
+  const { authState, checkValidTokenAndSetAuth } = useAuth();
   const { theme, setTheme } = useTheme();
-  // const { isSignnedIn } = authState;
-  const isSignnedIn = false;
+  const { isSignnedIn } = authState;
   const navigate = useNavigate();
 
   const wishlist = [];
@@ -59,7 +58,7 @@ export default function Navbar() {
                 {/* <!-- SignUp Button --> */}
                 <Link
                   className="dui-nav-sch-act__signup-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
-                  to="/playlist"
+                  to="/signup"
                 >
                   Sign Up
                 </Link>
@@ -67,7 +66,7 @@ export default function Navbar() {
                 {/* <!-- Login Button --> */}
                 <Link
                   className="dui-nav-sch-act__login-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
-                  to="/sign-in"
+                  to="/signin"
                 >
                   Login
                 </Link>
@@ -75,19 +74,6 @@ export default function Navbar() {
             )}
           </div>
         </li>
-
-        {isSignnedIn && (
-          <li>
-            <button
-              className="dui-nav-sch-act__signup-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld reset-input-inherit-parent"
-              onClick={() => {
-                navigate("/playlists");
-              }}
-            >
-              My Playlists
-            </button>
-          </li>
-        )}
 
         <li>
           <button
