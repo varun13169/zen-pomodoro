@@ -7,29 +7,30 @@ export default function PromodoroModel({ modalDetails }) {
 
   return (
     <div className="dui-modal" style={{ backgroundColor: "#c2c2c2db" }}>
-      <p
-        className="dui-modal__close"
-        onClick={() => modalDetails.actions.modalCloseAction()}
+      <div
+        className={`${styles["pomodoro-content-holder"]} dui-util-spc-pad-m`}
       >
-        X
-      </p>
-
-      <div className={`${styles["aaaaaaa"]} dui-util-spc-pad-m`}>
+        <p
+          className="dui-modal__close"
+          onClick={() => modalDetails.actions.modalCloseAction()}
+        >
+          X
+        </p>
         <p>{title}</p>
         <p>{description}</p>
 
         <button
-          className={`${styles[""]}dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
+          className={`${styles[""]} dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
         >
           Start
         </button>
         <button
-          className={`${styles[""]}dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
+          className={`${styles[""]} dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
         >
           Pause
         </button>
         <button
-          className={`${styles[""]}dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
+          className={`${styles[""]} dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
         >
           Reset
         </button>
