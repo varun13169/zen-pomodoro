@@ -67,10 +67,18 @@ export default function ToDoPage() {
             <table className={`${styles["todo-task-table"]}`}>
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Time</th>
-                  <th>Actions</th>
+                  <th>
+                    <p>Title</p>
+                  </th>
+                  <th>
+                    <p>Description</p>
+                  </th>
+                  <th>
+                    <p>Time</p>
+                  </th>
+                  <th>
+                    <p>Actions</p>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -78,15 +86,15 @@ export default function ToDoPage() {
                   return (
                     <tr key={todoTask._id}>
                       <td className={`${styles["todo-task-table-title"]}`}>
-                        {todoTask.title}
+                        <p>{todoTask.title}</p>
                       </td>
                       <td
                         className={`${styles["todo-task-table-description"]}`}
                       >
-                        {todoTask.description}
+                        <p>{todoTask.description}</p>
                       </td>
                       <td className={`${styles["todo-task-table-time"]}`}>
-                        {todoTask.time}
+                        <p>{todoTask.time}</p>
                       </td>
                       <td className={`${styles["todo-task-table-actions"]}`}>
                         <button
