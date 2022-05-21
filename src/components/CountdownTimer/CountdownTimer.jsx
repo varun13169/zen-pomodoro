@@ -15,6 +15,11 @@ export default function CountdownTimer({
     timeLeftInSec: 0,
   });
 
+  let pctage =
+    ((timeInMinutes - timeLeftInMinsState.timeLeftInMins) / timeInMinutes) *
+    180;
+  pctage = getCircleSectorToBeColor(timeLeftInMinsState, timeInMinutes);
+
   useEffect(() => {
     setTimeLeftInMinsState((timeLeftInMinsState) => {
       return {
@@ -26,7 +31,13 @@ export default function CountdownTimer({
   }, [countdownTimerInMinutes]);
 
   useEffect(() => {
-    if (counterStart === true && timeLeftInMinsState.timeLeftInMins !== 0) {
+    if (
+      counterStart === true &&
+      timeLeftInMinsState.timeLeftInMins >= -1 &&
+      timeLeftInMinsState.timeLeftInSec >= -1 &&
+      (timeLeftInMinsState.timeLeftInMins !== 0 ||
+        timeLeftInMinsState.timeLeftInSec !== 0)
+    ) {
       setTimeout(() => {
         if (timeLeftInMinsState.timeLeftInSec === 0) {
           setTimeLeftInMinsState((timeLeftInMinsState) => {
@@ -54,6 +65,41 @@ export default function CountdownTimer({
         {timeLeftInMinsState.timeLeftInMins}:{" "}
         {timeLeftInMinsState.timeLeftInSec}
       </p>
+
+      <div className={`${styles["circle-wrap"]}`}>
+        <div className={`${styles["circle"]}`}>
+          <div
+            class={`${styles["mask"]} ${styles["full"]}`}
+            style={{
+              transform: `rotate(${pctage}deg)`,
+            }}
+          >
+            <div
+              class={`${styles["fill"]}`}
+              style={{
+                transform: `rotate(${pctage}deg)`,
+              }}
+            ></div>
+          </div>
+          <div class={`${styles["mask"]} ${styles["half"]}`}>
+            <div
+              class={`${styles["fill"]}`}
+              style={{
+                transform: `rotate(${pctage}deg)`,
+              }}
+            ></div>
+          </div>
+        </div>
+      </div>
     </div>
   );
+}
+
+function getCircleSectorToBeColor(timeLeftInMinsState, timeInMinutes) {
+  const totalTimeInSec = timeInMinutes * 60;
+  const totalTimeLeftInSec =
+    timeLeftInMinsState.timeLeftInMins * 60 + timeLeftInMinsState.timeLeftInSec;
+
+  let pctage = ((totalTimeInSec - totalTimeLeftInSec) / totalTimeInSec) * 180;
+  return pctage;
 }

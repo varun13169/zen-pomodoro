@@ -6,3 +6,18 @@
   height: 50%;
   border-radius: 15px;
 }
+
+.task-details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+
+.task-details--title {
+  margin: 2rem 0rem 1rem 0rem;
+}
+
+.task-details--desc {
+  margin: 0rem 0rem 1rem 0rem;
+}

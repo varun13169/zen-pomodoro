@@ -255,7 +255,7 @@ export default function ToDoPage() {
                 placeholder="Add Time in Minutes"
                 value={taskFormTime}
                 onChange={(e) =>
-                  setTaskFormTime((taskFormTime) => e.target.value)
+                  setTaskFormTime((taskFormTime) => parseInt(e.target.value))
                 }
               />
             </label>

@@ -13,8 +13,10 @@ export default function PromodoroModel({ modalDetails }) {
 
   const [countdownTimerInMinutesState, setCountdownTimerInMinutesState] =
     useState({
-      timeInMinutes: 5,
+      timeInMinutes: 2,
     });
+  console.log(typeof time);
+  console.log(time);
 
   return (
     <div className="dui-modal" style={{ backgroundColor: "#c2c2c2db" }}>
@@ -27,15 +29,62 @@ export default function PromodoroModel({ modalDetails }) {
         >
           X
         </p>
-        <p>{title}</p>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div>
+            <CountdownTimer
+              countdownTimerInMinutes={countdownTimerInMinutesState}
+              counterStartState={counterStartState}
+            ></CountdownTimer>
+
+            <button
+              className={`${styles[""]} 
+          dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
+              onClick={() => {
+                setCounterStartState((counterStartState) => {
+                  return {
+                    ...counterStartState,
+                    counterStart: !counterStartState.counterStart,
+                  };
+                });
+              }}
+            >
+              {counterStartState.counterStart === true ? "Pause" : "Start"}
+            </button>
+            <button
+              className={`${styles[""]} dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
+              onClick={() => {
+                setCountdownTimerInMinutesState(
+                  (countdownTimerInMinutesState) => {
+                    return { timeInMinutes: 5 };
+                  }
+                );
+              }}
+            >
+              Reset
+            </button>
+          </div>
+          <div className={`${styles["task-details"]}`}>
+            <p className={`${styles["task-details--title"]} dui-util-fw-bld`}>
+              {title}
+            </p>
+            <p className={`${styles["task-details--desc"]}`}>{description}</p>
+          </div>
+        </div>
+        {/* <p>{title}</p>
         <p>{description}</p>
 
         <CountdownTimer
           countdownTimerInMinutes={countdownTimerInMinutesState}
           counterStartState={counterStartState}
-        ></CountdownTimer>
+        ></CountdownTimer> */}
 
-        <button
+        {/* <button
           className={`${styles[""]} 
           dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
           onClick={() => {
@@ -49,11 +98,6 @@ export default function PromodoroModel({ modalDetails }) {
         >
           {counterStartState.counterStart === true ? "Pause" : "Start"}
         </button>
-        {/* <button
-          className={`${styles[""]} dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
-        >
-          Pause
-        </button> */}
         <button
           className={`${styles[""]} dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
           onClick={() => {
@@ -63,7 +107,7 @@ export default function PromodoroModel({ modalDetails }) {
           }}
         >
           Reset
-        </button>
+        </button> */}
       </div>
     </div>
   );
