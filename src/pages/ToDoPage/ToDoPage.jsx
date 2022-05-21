@@ -67,16 +67,18 @@ export default function ToDoPage() {
             <table className={`${styles["todo-task-table"]}`}>
               <thead>
                 <tr>
-                  <th>
+                  <th className={`${styles["todo-task-table-title-header"]}`}>
                     <p>Title</p>
                   </th>
-                  <th>
+                  <th
+                    className={`${styles["todo-task-table-description-header"]}`}
+                  >
                     <p>Description</p>
                   </th>
-                  <th>
+                  <th className={`${styles["todo-task-table-time-header"]}`}>
                     <p>Time</p>
                   </th>
-                  <th>
+                  <th className={`${styles["todo-task-table-actions-header"]}`}>
                     <p>Actions</p>
                   </th>
                 </tr>

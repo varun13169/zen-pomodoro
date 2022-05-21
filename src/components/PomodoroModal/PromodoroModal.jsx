@@ -13,7 +13,7 @@ export default function PromodoroModel({ modalDetails }) {
 
   const [countdownTimerInMinutesState, setCountdownTimerInMinutesState] =
     useState({
-      timeInMinutes: 2,
+      timeInMinutes: time,
     });
   console.log(typeof time);
   console.log(time);
@@ -34,40 +34,49 @@ export default function PromodoroModel({ modalDetails }) {
           style={{
             display: "flex",
             flexDirection: "column",
+            overflow: "auto",
           }}
         >
           <div>
+            <p
+              className={`dui-primary-color dui-util-txt-reg dui-util-fw-sbld`}
+            >
+              Promodoro
+            </p>
             <CountdownTimer
               countdownTimerInMinutes={countdownTimerInMinutesState}
               counterStartState={counterStartState}
+              setCounterStartState={setCounterStartState}
             ></CountdownTimer>
 
-            <button
-              className={`${styles[""]} 
+            <div className={`${styles["pomodoro-content-holder--actions"]}`}>
+              <button
+                className={`${styles[""]} 
           dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
-              onClick={() => {
-                setCounterStartState((counterStartState) => {
-                  return {
-                    ...counterStartState,
-                    counterStart: !counterStartState.counterStart,
-                  };
-                });
-              }}
-            >
-              {counterStartState.counterStart === true ? "Pause" : "Start"}
-            </button>
-            <button
-              className={`${styles[""]} dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
-              onClick={() => {
-                setCountdownTimerInMinutesState(
-                  (countdownTimerInMinutesState) => {
-                    return { timeInMinutes: 5 };
-                  }
-                );
-              }}
-            >
-              Reset
-            </button>
+                onClick={() => {
+                  setCounterStartState((counterStartState) => {
+                    return {
+                      ...counterStartState,
+                      counterStart: !counterStartState.counterStart,
+                    };
+                  });
+                }}
+              >
+                {counterStartState.counterStart === true ? "Pause" : "Start"}
+              </button>
+              <button
+                className={`${styles[""]} dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
+                onClick={() => {
+                  setCountdownTimerInMinutesState(
+                    (countdownTimerInMinutesState) => {
+                      return { timeInMinutes: time };
+                    }
+                  );
+                }}
+              >
+                Reset
+              </button>
+            </div>
           </div>
           <div className={`${styles["task-details"]}`}>
             <p className={`${styles["task-details--title"]} dui-util-fw-bld`}>

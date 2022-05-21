@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 export default function CountdownTimer({
   countdownTimerInMinutes,
   counterStartState,
+  setCounterStartState,
 }) {
   const { timeInMinutes } = countdownTimerInMinutes;
   const { counterStart } = counterStartState;
@@ -56,16 +57,13 @@ export default function CountdownTimer({
           });
         }
       }, 1000);
+    } else {
+      setCounterStartState(false);
     }
   }, [timeLeftInMinsState, counterStartState]);
 
   return (
     <div>
-      <p>
-        {timeLeftInMinsState.timeLeftInMins}:{" "}
-        {timeLeftInMinsState.timeLeftInSec}
-      </p>
-
       <div className={`${styles["circle-wrap"]}`}>
         <div className={`${styles["circle"]}`}>
           <div
@@ -89,6 +87,13 @@ export default function CountdownTimer({
               }}
             ></div>
           </div>
+        </div>
+
+        <div class={`${styles["inner-circle"]}`}>
+          <p>
+            {timeLeftInMinsState.timeLeftInMins} :{" "}
+            {timeLeftInMinsState.timeLeftInSec}
+          </p>
         </div>
       </div>
     </div>

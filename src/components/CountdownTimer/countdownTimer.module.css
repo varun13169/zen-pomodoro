@@ -1,29 +1,29 @@
 .circle-wrap {
-  margin: 20px auto;
-  width: 150px;
-  height: 150px;
-  background: #fefcff;
+  margin: 2rem auto;
+  width: 15rem;
+  height: 15rem;
+  background: var(--dui-primary-color-p2-lgt-20pct);
   border-radius: 50%;
-  border: 1px solid black;
-
+  border: 1px solid var(--dui-light-theme-bg);
   box-sizing: content-box;
+  position: relative;
 }
 
 .circle-wrap .circle .mask,
 .circle-wrap .circle .fill {
-  width: 150px;
-  height: 150px;
+  width: 15rem;
+  height: 15rem;
   position: absolute;
   border-radius: 50%;
 }
 
 .mask .fill {
-  clip: rect(0px, 75px, 150px, 0px);
-  background-color: #227ded;
+  clip: rect(0rem, 7.5rem, 15rem, 0rem);
+  background-color: var(--dui-primary-color);
 }
 
 .circle-wrap .circle .mask {
-  clip: rect(0px, 150px, 150px, 75px);
+  clip: rect(0rem, 15rem, 15rem, 7.5rem);
 }
 
 .filled-region .mask.full,
@@ -32,22 +32,17 @@
   transform: rotate(180deg);
 }
 
-/* @keyframes fill {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(135deg);
-  }
-} */
+.inner-circle {
+  width: 12rem;
+  height: 12rem;
+  position: absolute;
+  border-radius: 50%;
+  margin: 1.5rem 1.5rem;
 
-/* .innercircle {
-  width: calc(7rem);
-  height: calc(7rem);
-  background-color: white;
-  border-radius: 999px;
+  background-color: var(--site-bg-color);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-.mask .fill {
-  clip-path: polygon(0 1%, 50% 0, 50% 100%, 0% 100%);
-} */
