@@ -51,8 +51,8 @@ export default function PromodoroModel({ modalDetails }) {
 
             <div className={`${styles["pomodoro-content-holder--actions"]}`}>
               <button
-                className={`${styles[""]} 
-          dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
+                className={`${styles["pomodoro-content-holder--action-start"]} 
+          dui-btn dui-btn--primary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
                 onClick={() => {
                   setCounterStartState((counterStartState) => {
                     return {
@@ -65,13 +65,24 @@ export default function PromodoroModel({ modalDetails }) {
                 {counterStartState.counterStart === true ? "Pause" : "Start"}
               </button>
               <button
-                className={`${styles[""]} dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
+                className={`${styles["pomodoro-content-holder--action-reset"]} dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
                 onClick={() => {
-                  setCountdownTimerInMinutesState(
-                    (countdownTimerInMinutesState) => {
-                      return { timeInMinutes: time };
-                    }
-                  );
+                  // Pause the counter
+                  setCounterStartState((counterStartState) => {
+                    return {
+                      ...counterStartState,
+                      counterStart: false,
+                    };
+                  });
+                  // wraping in set timeout to queue it in
+                  setTimeout(() => {
+                    // reset the timer
+                    setCountdownTimerInMinutesState(
+                      (countdownTimerInMinutesState) => {
+                        return { timeInMinutes: time };
+                      }
+                    );
+                  }, 1000);
                 }}
               >
                 Reset
@@ -85,38 +96,6 @@ export default function PromodoroModel({ modalDetails }) {
             <p className={`${styles["task-details--desc"]}`}>{description}</p>
           </div>
         </div>
-        {/* <p>{title}</p>
-        <p>{description}</p>
-
-        <CountdownTimer
-          countdownTimerInMinutes={countdownTimerInMinutesState}
-          counterStartState={counterStartState}
-        ></CountdownTimer> */}
-
-        {/* <button
-          className={`${styles[""]} 
-          dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
-          onClick={() => {
-            setCounterStartState((counterStartState) => {
-              return {
-                ...counterStartState,
-                counterStart: !counterStartState.counterStart,
-              };
-            });
-          }}
-        >
-          {counterStartState.counterStart === true ? "Pause" : "Start"}
-        </button>
-        <button
-          className={`${styles[""]} dui-btn dui-btn--secondary dui-util-bdr-radi-5px-s dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent`}
-          onClick={() => {
-            setCountdownTimerInMinutesState((countdownTimerInMinutesState) => {
-              return { timeInMinutes: 5 };
-            });
-          }}
-        >
-          Reset
-        </button> */}
       </div>
     </div>
   );

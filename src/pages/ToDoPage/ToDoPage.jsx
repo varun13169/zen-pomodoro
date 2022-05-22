@@ -20,7 +20,7 @@ export default function ToDoPage() {
   const [taskFormTaskId, setTaskFormTaskId] = useState("");
   const [taskFormTitle, setTaskFormTitle] = useState("");
   const [taskFormDesc, setTaskFormDesc] = useState("");
-  const [taskFormTime, setTaskFormTime] = useState(0);
+  const [taskFormTime, setTaskFormTime] = useState(1);
 
   const [dispPromodoroModal, setDispPromodoroModal] = useState({
     display: false,
@@ -39,8 +39,16 @@ export default function ToDoPage() {
 
       <section className={`${styles["page-main"]}`}>
         <main className={`${styles["main-content"]}`}>
-          <h3>Welcome</h3>
-          <p>You have following task for today</p>
+          <div className={`${styles["main-heading"]}`}>
+            <h3>Welcome</h3>
+            {isSignnedIn === true ? (
+              <>
+                <p>You have following tasks in ToDo list</p>
+              </>
+            ) : (
+              <p>Login to view your ToDo tasks.</p>
+            )}
+          </div>
 
           <div className={`${styles["task-list-holder"]}`}>
             <div className={`${styles["task-list-holder--heading"]}`}>

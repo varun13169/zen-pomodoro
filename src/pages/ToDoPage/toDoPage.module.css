@@ -47,6 +47,10 @@
   overflow: auto;
 }
 
+.main-heading {
+  margin: 3rem 0rem 3rem 0rem;
+}
+
 .task-list-holder {
   width: 70%;
   min-height: 70%;
