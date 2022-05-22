@@ -17,15 +17,15 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
-  <StrictMode>
-    <BrowserRouter>
-      <ThemeContextProvider>
-        <AuthContextProvider>
-          <TodoTasksContextProvider>
-            <App />
-          </TodoTasksContextProvider>
-        </AuthContextProvider>
-      </ThemeContextProvider>
-    </BrowserRouter>
-  </StrictMode>
+  // <StrictMode>
+  <BrowserRouter>
+    <ThemeContextProvider>
+      <AuthContextProvider>
+        <TodoTasksContextProvider>
+          <App />
+        </TodoTasksContextProvider>
+      </AuthContextProvider>
+    </ThemeContextProvider>
+  </BrowserRouter>
+  // </StrictMode>
 );

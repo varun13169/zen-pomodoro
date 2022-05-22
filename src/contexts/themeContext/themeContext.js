@@ -3,7 +3,7 @@ import { createContext, useState, useContext } from "react";
 const ThemeContext = createContext();
 
 const ThemeContextProvider = ({ children }) => {
-  const [theme, setThemeState] = useState({
+  const [themeState, setThemeState] = useState({
     currentTheme: ["light", "dark"].includes(
       localStorage.getItem("currentTheme")
     )
@@ -25,7 +25,7 @@ const ThemeContextProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ themeState, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );

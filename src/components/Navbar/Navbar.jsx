@@ -6,7 +6,7 @@ import { useAuth, useTheme } from "../../contexts";
 
 export default function Navbar() {
   const { authState, checkValidTokenAndSetAuth } = useAuth();
-  const { theme, setTheme } = useTheme();
+  const { themeState, setTheme } = useTheme();
   const { isSignnedIn } = authState;
   const navigate = useNavigate();
 
@@ -80,14 +80,15 @@ export default function Navbar() {
             className="dui-nav-sch-act__drk-mode-btn dui-btn reset-button-inherit-parent"
             onClick={() => {
               setTheme({
-                ...theme,
-                currentTheme: theme.currentTheme === "light" ? "dark" : "light",
+                ...themeState,
+                currentTheme:
+                  themeState.currentTheme === "light" ? "dark" : "light",
               });
             }}
           >
-            {theme.currentTheme === "dark" && <SunSVG></SunSVG>}
+            {themeState.currentTheme === "dark" && <SunSVG></SunSVG>}
 
-            {theme.currentTheme === "light" && <MoonSVG></MoonSVG>}
+            {themeState.currentTheme === "light" && <MoonSVG></MoonSVG>}
           </button>
         </li>
       </ul>
