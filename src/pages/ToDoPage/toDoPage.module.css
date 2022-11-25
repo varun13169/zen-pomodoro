@@ -47,11 +47,16 @@
   overflow: auto;
 }
 
+.main-heading {
+  margin: 3rem 0rem 3rem 0rem;
+}
+
 .task-list-holder {
   width: 70%;
-  height: 70%;
+  min-height: 70%;
+  height: fit-content;
   padding: 2rem;
-  background-color: white;
+  background-color: var(--dui-light-theme-bg);
   border-radius: 15px;
 }
 
@@ -122,6 +127,21 @@ th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  word-wrap: break-word;
+}
+
+.todo-task-table-title-header {
+  width: 25%;
+}
+.todo-task-table-description-header {
+  width: 40%;
+}
+
+.todo-task-table-title p,
+.todo-task-table-description p,
+.todo-task-table-time p,
+.todo-task-table-actions p {
+  word-break: break-all;
 }
 
 .todo-task-table-actions {

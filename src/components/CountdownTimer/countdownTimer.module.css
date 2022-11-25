@@ -1,0 +1,48 @@
+.circle-wrap {
+  margin: 2rem auto;
+  width: 15rem;
+  height: 15rem;
+  background: var(--dui-primary-color-p2-lgt-20pct);
+  border-radius: 50%;
+  border: 1px solid var(--dui-light-theme-bg);
+  box-sizing: content-box;
+  position: relative;
+}
+
+.circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: 15rem;
+  height: 15rem;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.mask .fill {
+  clip: rect(0rem, 7.5rem, 15rem, 0rem);
+  background-color: var(--dui-primary-color);
+}
+
+.circle-wrap .circle .mask {
+  clip: rect(0rem, 15rem, 15rem, 7.5rem);
+}
+
+.filled-region .mask.full,
+.circle .fill {
+  animation: fill ease-in-out 3s;
+  transform: rotate(180deg);
+}
+
+.inner-circle {
+  width: 12rem;
+  height: 12rem;
+  position: absolute;
+  border-radius: 50%;
+  margin: 1.5rem 1.5rem;
+
+  background-color: var(--site-bg-color);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

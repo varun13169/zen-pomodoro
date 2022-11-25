@@ -20,7 +20,7 @@ export default function ToDoPage() {
   const [taskFormTaskId, setTaskFormTaskId] = useState("");
   const [taskFormTitle, setTaskFormTitle] = useState("");
   const [taskFormDesc, setTaskFormDesc] = useState("");
-  const [taskFormTime, setTaskFormTime] = useState(0);
+  const [taskFormTime, setTaskFormTime] = useState(1);
 
   const [dispPromodoroModal, setDispPromodoroModal] = useState({
     display: false,
@@ -39,8 +39,16 @@ export default function ToDoPage() {
 
       <section className={`${styles["page-main"]}`}>
         <main className={`${styles["main-content"]}`}>
-          <h3>Welcome</h3>
-          <p>You have following task for today</p>
+          <div className={`${styles["main-heading"]}`}>
+            <h3>Welcome</h3>
+            {isSignnedIn === true ? (
+              <>
+                <p>You have following tasks in ToDo list</p>
+              </>
+            ) : (
+              <p>Login to view your ToDo tasks.</p>
+            )}
+          </div>
 
           <div className={`${styles["task-list-holder"]}`}>
             <div className={`${styles["task-list-holder--heading"]}`}>
@@ -67,10 +75,20 @@ export default function ToDoPage() {
             <table className={`${styles["todo-task-table"]}`}>
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Time</th>
-                  <th>Actions</th>
+                  <th className={`${styles["todo-task-table-title-header"]}`}>
+                    <p>Title</p>
+                  </th>
+                  <th
+                    className={`${styles["todo-task-table-description-header"]}`}
+                  >
+                    <p>Description</p>
+                  </th>
+                  <th className={`${styles["todo-task-table-time-header"]}`}>
+                    <p>Time</p>
+                  </th>
+                  <th className={`${styles["todo-task-table-actions-header"]}`}>
+                    <p>Actions</p>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -78,15 +96,15 @@ export default function ToDoPage() {
                   return (
                     <tr key={todoTask._id}>
                       <td className={`${styles["todo-task-table-title"]}`}>
-                        {todoTask.title}
+                        <p>{todoTask.title}</p>
                       </td>
                       <td
                         className={`${styles["todo-task-table-description"]}`}
                       >
-                        {todoTask.description}
+                        <p>{todoTask.description}</p>
                       </td>
                       <td className={`${styles["todo-task-table-time"]}`}>
-                        {todoTask.time}
+                        <p>{todoTask.time}</p>
                       </td>
                       <td className={`${styles["todo-task-table-actions"]}`}>
                         <button
@@ -247,7 +265,7 @@ export default function ToDoPage() {
                 placeholder="Add Time in Minutes"
                 value={taskFormTime}
                 onChange={(e) =>
-                  setTaskFormTime((taskFormTime) => e.target.value)
+                  setTaskFormTime((taskFormTime) => parseInt(e.target.value))
                 }
               />
             </label>
