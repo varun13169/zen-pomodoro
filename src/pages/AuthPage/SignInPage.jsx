@@ -60,7 +60,7 @@ export default function SiginInPage() {
             <h2 className="dui-auth-card__title dui-util-fw-bld">Sign In</h2>
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
-              <p className="dui-util-txt-sm" style={{color: "red"}}>Note: working sample credentials are pre-populated please proceed to login.</p>
+              <p className="dui-util-txt-sm" style={{color: "red"}}>Note: working sample credentials are<br/>pre-populated please proceed to login.</p>
               <label
                 htmlFor="email-id"
                 className="dui-util-txt-sm dui-util-fw-sbld"
