@@ -9,8 +9,8 @@ import styles from "./auth-page.module.css";
 
 export default function SiginInPage() {
   const [loginState, loginActionDispatch] = useReducer(signinReducer, {
-    email: "",
-    password: "",
+    email: "adarshbalika@gmail.com",
+    password: "adarshbalika",
   });
   const [apiResponse, setApiResponse] = useState({
     err: null,
